@@ -22,7 +22,7 @@ export default class SinglyLinkedList<T> {
         }
         ++this.length;
     }
-    // insertAt(item: T, idx: number): void {}
+    insertAt(item: T, idx: number): void {}
     append(item: T): void {
         const node: Node<T> = { value: item };
         if (!this.tail) {
