@@ -9,8 +9,8 @@ export default class Queue<T> {
     private tail?: Node<T>;
 
     constructor() {
-        this.length = 0;
         this.head = this.tail = undefined;
+        this.length = 0;
     }
 
     enqueue(item: T): void {
@@ -22,16 +22,17 @@ export default class Queue<T> {
             this.tail.next = node;
             this.tail = node;
         }
-        this.length++;
+        ++this.length;
     }
     deque(): T | undefined {
         if (!this.head) return;
 
         const head = this.head;
-        this.head = head.next;
-        this.length--;
-
-        if (this.length === 0) this.tail = undefined;
+        this.head = this.head.next;
+        --this.length;
+        if (this.length === 0) {
+            this.tail = undefined;
+        }
 
         return head.value;
     }
