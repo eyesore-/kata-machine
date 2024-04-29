@@ -4,14 +4,12 @@ export default function bs_list(haystack: number[], needle: number): boolean {
 
     do {
         const m = Math.floor(lo + (hi - lo) / 2);
+        const v = haystack[m];
 
-        if (haystack[m] === needle) {
-            return true;
-        } else if (haystack[m] < needle) {
-            lo = m + 1;
-        } else {
-            hi = m;
-        }
+        if (v === needle) return true;
+
+        if (v > needle) hi = m;
+        else lo = m + 1;
     } while (lo < hi);
 
     return false;
